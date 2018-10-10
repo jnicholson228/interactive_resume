@@ -1,0 +1,135 @@
+/* ---------------------------------
+
+Primary Style
+
+-----------------------------------*/
+
+*, *::after, *::before {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+
+html{
+    font-size: 62.5%
+}
+
+body{
+    font-size: 1.6rem;
+    font-family: 'Roboto', sans-serif;
+    color: #2c343b;
+    background-color: #f2f2f2;
+}
+
+a{
+    color: #d44457;
+    text-decoration: none;
+}
+
+img, video{
+    max-width: 100%;
+}
+
+/*-------------Slider Structure--------------*/
+
+.hero{
+    position: relative;
+}
+
+.hero-slider{
+    position: relative;
+    height: 360px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.hero-slide-item{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Force Hardware Acceleration */
+    -webkit-transform: translateZ(0px);
+            transform: translateZ(0px);
+    will-change: transform;
+    -webkit-transform: translateX(100%);
+        -ms-transform: translateX(100%);
+            transform: translateX(100%);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.hero-slide-item.hero-slide-item--selected {
+    /* this is the visible slide */
+    -webkit-transform: translateX(0);
+        -ms-transform: translateX(0);
+            transform: translateX(0);
+
+}
+
+.hero-slide-item.hero-slide-item--move-left {
+    /* this is the visible slide */
+    -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+            transform: translateX(-100%);
+
+}
+
+.hero-slide-item.hero-slide-item--is-moving,
+.hero-slide-item.hero-slide-item--selected {
+    /* the cd-hero__slide--is-moving class is assigned to the slide which is moving outside the viewport */
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s; 
+
+}
+
+/*-------------Slider Style--------------*/
+
+.hero-slide-item {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.hero-slide-item:first-of-type{
+    background-color: #2c343b;
+}
+
+.hero-slide-item:nth-of-type(2){
+    background-color: #3d4952;
+}
+
+.hero-slide-content.hero-slide-content--full-width,
+.hero-slide-content.hero-slide-content--half-width {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    /* text alignment padding */
+    padding-top: 100px;
+    text-align: center;
+    /* force hardware aceleration */
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+    will-change: transform;
+}
+
+
+/*-----------Javascript disabled-------*/
+
+.no-js .hero-slide-item{
+    display: none;
+}
+
+.no-js .hero-slide-item.hero-slide-item--selected{
+    display: block;
+}
+
+.no-js .hero-nav{
+    display: none;
+}
